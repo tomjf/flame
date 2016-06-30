@@ -1,0 +1,6 @@
+{
+  "name": "Flame",
+  "tagline": "Flame data reduction pipeline",
+  "body": "# flame\r\nFlame data reduction pipeline\r\n-----------------------------\r\n\r\nby Sirio Belli (MPE) 2016\r\n\r\n\r\nTo install: download the flame/ directory and add it to your IDL path.\r\nThe latest versions of the NASA IDL library, Coyote library, and mpfit library are required.\r\n\r\nTo run:\r\n1) copy flame_driver.pro to your working directory\r\n2) create the science.txt and the darks.txt files, containing the file names of the relevant science and dark frames\r\n3) edit the top part of flame_driver.pro\r\n4) run flame_driver.pro either line-by-line or all at once by typing \"idl flame_driver.pro\" at the command line\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
