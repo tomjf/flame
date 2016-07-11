@@ -8,12 +8,13 @@
 ; a resolveing power of 10000, and finally exclude the other doublets that are within a
 ; resolving power of 5000
 ;
+; NB: could not go blueward of 0.9 um because the sky model does not go there
 ;************************************************************
 
 
 
 ; read in line list
-readcol, 'line_list.dat', line_lambda, line_flux
+readcol, 'line_list_Rousselot.dat', line_lambda, line_flux
 
 ; transform to microns
 line_lambda *= 1d-4
@@ -23,8 +24,8 @@ readcol, 'sky_emission_model.dat', sky_lambda, sky_flux
 
 
 ; set a small lambda range with which we can work
-l0 = 2.4
-l1 = 2.5
+l0 = 0.9
+l1 = 1.0
 l_range = [l0 - 0.05*(l1-l0) , l1 + 0.05*(l1-l0) ]
 wline = where(line_lambda GE l0 and line_lambda LT l1, /null)
 wsky =  where(sky_lambda GE l0 and sky_lambda LT l1, /null)
