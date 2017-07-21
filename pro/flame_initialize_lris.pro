@@ -288,6 +288,20 @@ FUNCTION flame_initialize_lris, input
 
     endfor
 
+    ; if provided, do the same to the arcs
+    if fuel.util.filenames_arc ne !NULL then $
+      for i=0, n_elements(fuel.util.filenames_arc)-1 do begin
+
+        if ~file_test(fuel.util.filenames_arc[i]) then $
+          message, fuel.util.filenames_arc[i] + ' does not exist!'
+
+        image = readmhdufits(fuel.util.filenames_arc[i], header=header, gaindata=gaindata)
+        image = transpose(image)
+        new_filename = lris_dir + file_basename(fuel.util.filenames_arc[i])
+        writefits, new_filename, image, header
+        fuel.util.filenames_arc[i] = new_filename
+
+      endfor
   ; -----------------------------------------------------------------
 
   ; read the approximate slit positions inserted manually
