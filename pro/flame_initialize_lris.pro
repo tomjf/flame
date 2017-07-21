@@ -110,10 +110,20 @@ FUNCTION flame_initialize_lris_slits, header, instrument=instrument, slit_y=slit
   ; trace the edges of the slits using the sky emission lines
   for i_slit=0, n_elements(slit_y)/2-1 do begin
 
-  ; NEED TO calculate these values for different settings
-  range_lambda0 = [0.4, 0.7]
-  range_pixel_scale = [5d-5, 10d-5]
+  ; range of starting wavelength and pixel scale
+  ; LRIS - RED
+  if (strsplit(instrument.detector, /extract))[0] eq 'LRIS-R' then begin
 
+    range_lambda0 = [0.4, 0.7]
+    range_pixel_scale = [5d-5, 10d-5]
+
+  ; LRIS - BLUE
+  endif else begin
+    print, 'hello the blue condition is working nicely'
+    range_lambda0 = [0.25, 0.4]
+    range_pixel_scale = [5d-5, 10d-5]
+
+  endelse
 
     this_slit = { $
       number:i_slit+1, $
